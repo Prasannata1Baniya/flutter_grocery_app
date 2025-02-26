@@ -35,7 +35,7 @@ class _DetailPageState extends State<DetailPage> {
                   ),
                 ),
               ),
-              Image.asset('assets/images/vegetables.jpg', height: 200),
+             Image.asset('assets/images/vegetables.jpg', height: 200),
              const SizedBox(
                 height: 30,
               ),
@@ -56,7 +56,7 @@ class _DetailPageState extends State<DetailPage> {
               ),
             ),
             const SizedBox(width: 8),
-            Text("2kg "),
+           const  Text("2kg "),
             const SizedBox(width: 8),
             Container(
               decoration: BoxDecoration(
@@ -71,7 +71,7 @@ class _DetailPageState extends State<DetailPage> {
           ],
         ),
         Text(
-          "",
+          "Vegetables ...",
           style: AppWidget.headlineTextfieldStyle(),
         ),
         const SizedBox(
@@ -141,10 +141,10 @@ class _DetailPageState extends State<DetailPage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-                retatedItemsContainer("assets/images/potato.jpg"),
-                retatedItemsContainer("assets/images/potato.jpg"),
-                retatedItemsContainer("assets/images/potato.jpg"),
-                retatedItemsContainer("assets/images/potato.jpg"),
+              relatedItemsContainer("assets/images/potato.png"),
+               relatedItemsContainer("assets/images/cabbage.png"),
+                relatedItemsContainer("assets/images/cauliflower.png"),
+                relatedItemsContainer("assets/images/potato.png"),
             ],
           ),
         ),
@@ -173,13 +173,13 @@ class _DetailPageState extends State<DetailPage> {
            ],), 
           ),
 
-        ],)
-
+        ],
+        ),
       ],
     ));
   }
 
-  Container retatedItemsContainer(String imageData) {
+  Container relatedItemsContainer(String imageData) {
     return Container(
       decoration:const BoxDecoration(
         color: Colors.white,

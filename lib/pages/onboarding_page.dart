@@ -25,7 +25,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 color: Colors.black,
               ),
               child: Image.asset(
-                'assets/images/vegetables.jpg',
+                'assets/images/vegetables.png',
                 height: MediaQuery.of(context).size.height/2,
               ),
             ),

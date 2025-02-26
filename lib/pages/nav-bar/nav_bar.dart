@@ -40,7 +40,8 @@ class _NavBarPageState extends State<NavBarPage> {
     return Scaffold(
         bottomNavigationBar: CurvedNavigationBar(
           height:75,
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.white,
+            color:Colors.black,
             onTap: (int index) {
               setState(() {
                 currentTabIndex = index;

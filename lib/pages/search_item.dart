@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/pages/detail_page.dart';
 import 'package:grocery_app/service/service.dart';
 
 class SearchItemPage extends StatefulWidget {
@@ -13,7 +14,7 @@ class _SearchItemPageState extends State<SearchItemPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-      margin: const EdgeInsets.only(top: 40, left: 20, right: 20.0),
+      margin: const EdgeInsets.only(top:30, left: 20, right: 20.0),
       child: Column(
         children: [
           Row(
@@ -37,16 +38,16 @@ class _SearchItemPageState extends State<SearchItemPage> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(50),
                 child: Image.asset(
-                  'assets/images/profile/png',
-                  height: 50,
-                  width: 50,
+                  'assets/images/profile.png',
+                  height: 60,
+                  width: 60,
+                  color: Colors.black,
                 ),
               )
             ],
           ),
-          const SizedBox(
-            height: 20.0,
-          ),
+          const SizedBox(height: 20.0,),
+
           Container(
             decoration: BoxDecoration(
               color: Colors.grey.shade400,
@@ -63,22 +64,22 @@ class _SearchItemPageState extends State<SearchItemPage> {
               ),
             ),
           ),
-          Container(
-            height:MediaQuery.of(context).size.height/2,
+          const SizedBox(height:15),
+          Expanded(
             child: GridView(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 0.6,
+                  childAspectRatio: 0.8,
                   mainAxisSpacing: 10.0,
                   crossAxisSpacing: 20.0,
                   ),
               children: [
-                container("assets/images/cabbage.jpg", "Cabbage", "1.99\$"),
-                container("assets/images/cauliflower.jpg", "Cauliflower", "1.99\$"),
-                container("assets/images/potato.jpg", "Potato", "1.99\$"),
-                container("assets/images/cabbage.jpg", "Cabbage", "1.99\$"),
-                container("assets/images/cabbage.jpg", "Cabbage", "1.99\$"),
-                container("assets/images/cabbage.jpg", "Cabbage", "1.99\$"),
+               container("assets/images/cabbage.png", "Cabbage", "1.99\$"),
+               container("assets/images/cauliflower.png","Cauliflower", "2.99\$"),
+               container("assets/images/potato.png", "Potato", "3.99\$"),
+               container("assets/images/cabbage.png", "Cabbage", "1.99\$"),
+               container("assets/images/cabbage.png", "Cabbage", "1.99\$"),
+               container("assets/images/cabbage.png", "Cabbage", "1.99\$"),
               ],
             ),
           ),
@@ -87,16 +88,17 @@ class _SearchItemPageState extends State<SearchItemPage> {
     ));
   }
 
-  Container container(String imageData,String text,String price) {
+Container container(String imageData,String text,String price) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.black26,width: 1),
+        //color:Colors.black,
+        border: Border.all(color: Colors.white,width: 1),
         borderRadius: BorderRadius.circular(25),
       ),
       child: Column(
         children: [
           Image.asset(
-            'assets/images/cabbage.jpg',
+            imageData,
             height: 100,
             width: 100,
             fit: BoxFit.cover,
@@ -104,22 +106,31 @@ class _SearchItemPageState extends State<SearchItemPage> {
           const SizedBox(height: 10),
           Text(
             text,
-            style: AppWidget.normalTextfieldStyle(),
+            style: AppWidget.headlineTextfieldStyle(),
           ),
+          const SizedBox(height:20),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(price),
-               const SizedBox(height:5),
-           Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.grey.shade400,
+              // const SizedBox(width:5),
+           GestureDetector(
+             onTap: (){
+               Navigator.push(context, MaterialPageRoute(
+                   builder: (context)=>const DetailPage())
+               );
+             },
+             child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.grey.shade400,
+                ),
+                child:const  Icon(
+                  Icons.add,
+                  color: Colors.green,size: 40,
+                ),
               ),
-              child:const  Icon(
-                Icons.add,
-                color: Colors.green,size: 60,
-              ),
-            ),
+           ),
             ],
           ),
         ],
