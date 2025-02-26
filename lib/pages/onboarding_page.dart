@@ -15,24 +15,24 @@ class _OnboardingPageState extends State<OnboardingPage> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Container(
-        margin:const EdgeInsets.only(top:40,left:15,right:15),
+        margin:const EdgeInsets.only(top:20,left:15,right:15),
         child: Stack(
           children: [
             Container(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(top:20.0),
               width: MediaQuery.of(context).size.width,
               decoration: const BoxDecoration(
-                color: Colors.white,
+                color: Colors.black,
               ),
               child: Image.asset(
                 'assets/images/vegetables.jpg',
-                height: MediaQuery.of(context).size.height,
+                height: MediaQuery.of(context).size.height/2,
               ),
             ),
             Container(
                 margin: EdgeInsets.only(
                     top: MediaQuery.of(context).size.height / 2),
-                width: MediaQuery.of(context).size.height / 2,
+                width: MediaQuery.of(context).size.height,
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(

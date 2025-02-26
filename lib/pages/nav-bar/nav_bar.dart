@@ -39,6 +39,8 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         bottomNavigationBar: CurvedNavigationBar(
+          height:75,
+          backgroundColor: Colors.black,
             onTap: (int index) {
               setState(() {
                 currentTabIndex = index;

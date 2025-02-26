@@ -63,21 +63,24 @@ class _SearchItemPageState extends State<SearchItemPage> {
               ),
             ),
           ),
-          GridView(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 0.6,
-                mainAxisSpacing: 10.0,
-                crossAxisSpacing: 20.0,
-                ),
-            children: [
-              container("assets/images/cabbage.jpg", "Cabbage", "1.99\$"),
-              container("assets/images/cauliflower.jpg", "Cauliflower", "1.99\$"),
-              container("assets/images/potato.jpg", "Potato", "1.99\$"),
-              container("assets/images/cabbage.jpg", "Cabbage", "1.99\$"),
-              container("assets/images/cabbage.jpg", "Cabbage", "1.99\$"),
-              container("assets/images/cabbage.jpg", "Cabbage", "1.99\$"),
-            ],
+          Container(
+            height:MediaQuery.of(context).size.height/2,
+            child: GridView(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.6,
+                  mainAxisSpacing: 10.0,
+                  crossAxisSpacing: 20.0,
+                  ),
+              children: [
+                container("assets/images/cabbage.jpg", "Cabbage", "1.99\$"),
+                container("assets/images/cauliflower.jpg", "Cauliflower", "1.99\$"),
+                container("assets/images/potato.jpg", "Potato", "1.99\$"),
+                container("assets/images/cabbage.jpg", "Cabbage", "1.99\$"),
+                container("assets/images/cabbage.jpg", "Cabbage", "1.99\$"),
+                container("assets/images/cabbage.jpg", "Cabbage", "1.99\$"),
+              ],
+            ),
           ),
         ],
       ),
