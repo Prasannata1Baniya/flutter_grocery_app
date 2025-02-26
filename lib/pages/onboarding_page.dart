@@ -30,9 +30,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
               ),
             ),
             Container(
+              //padding:const  EdgeInsets.only(top:15,left:12,right:12),
                 margin: EdgeInsets.only(
                     top: MediaQuery.of(context).size.height / 2),
-                width: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -50,6 +51,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     Text("Easy to buy", style: AppWidget.greyTextfieldStyle()),
                     const SizedBox(height: 10),
                     CircleAvatar(
+                      backgroundColor: Colors.pink.shade300,
                         radius: 50,
                         child: IconButton(
                           hoverColor: Colors.grey.shade400,
