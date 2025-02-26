@@ -1,12 +1,18 @@
 
-
 import 'package:flutter/material.dart';
+import '../../service/service.dart';
 
 class WalletPage extends StatelessWidget {
   const WalletPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.grey.shade600,
+        title: Text("Order Page",style: AppWidget.headlineTextfieldStyle(),),
+      ),
+    );
   }
 }
