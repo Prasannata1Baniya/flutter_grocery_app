@@ -28,6 +28,10 @@ class WalletPage extends StatelessWidget {
       appBar: AppBar(
         title:Text("Wallet",style: AppWidget.whiteTextfieldStyle(),),
         backgroundColor: Colors.black,
+        leading: IconButton(onPressed: (){
+          Navigator.of(context).pop();
+        }, icon: const Icon(Icons.arrow_back,color: Colors.white,)
+        ),
       ),
       body: Column(
         children: [

@@ -27,148 +27,145 @@ class DetailsPage extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Expanded(
-          child: Column(
-            children: [
-              // Image and Description Section
-              Container(
-                padding:const EdgeInsets.all(8.0),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade300,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.asset(
-                        imageUrl,
-                        height: 250,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    Text(description, style: AppWidget.normalTextfieldStyle()),
-                  ],
-                ),
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Container(
+              padding:const EdgeInsets.all(8.0),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.grey.shade300,
+                borderRadius: BorderRadius.circular(20),
               ),
-              const SizedBox(height: 30),
-
-              // Price and Quantity Section
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.grey.shade400,
-                    ),
-                    child: const Icon(
-                      Icons.remove,
-                      color: Colors.grey,
-                      size: 40,
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Image.asset(
+                      imageUrl,
+                      height: 250,
+                      fit: BoxFit.cover,
                     ),
                   ),
-                  const SizedBox(width: 8),
-                  Text(
-                    "\$$price", // Show price as currency
-                    style: AppWidget.headlineTextfieldStyle(),
-                  ),
-                  const SizedBox(width: 8),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.grey.shade400,
-                    ),
-                    child: const Icon(
-                      Icons.add,
-                      color: Colors.green,
-                      size: 40,
-                    ),
-                  ),
+                  const SizedBox(height: 20),
+                  Text(description, style: AppWidget.normalTextfieldStyle()),
                 ],
               ),
-              const SizedBox(height: 10),
+            ),
+            const SizedBox(height: 15.0),
 
-              // Time & Rating Section
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            // Price and Quantity Section
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.grey.shade400,
+                  ),
+                  child: const Icon(
+                    Icons.remove,
+                    color: Colors.grey,
+                    size: 40,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  "\$$price", // Show price as currency
+                  style: AppWidget.headlineTextfieldStyle(),
+                ),
+                const SizedBox(width: 8),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.grey.shade400,
+                  ),
+                  child: const Icon(
+                    Icons.add,
+                    color: Colors.green,
+                    size: 40,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+
+            // Time & Rating Section
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _infoBox(Icons.rate_review, "4.5", "Rating"),
+                _infoBox(Icons.lock_clock_outlined, "10-15 min", "Time"),
+              ],
+            ),
+            const SizedBox(height: 15),
+
+            // Related Items Section
+            Text(
+              "Related Items",
+              style: AppWidget.headlineTextfieldStyle(),
+            ),
+            const SizedBox(height: 10),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
                 children: [
-                  _infoBox(Icons.rate_review, "4.5", "Rating"),
-                  _infoBox(Icons.lock_clock_outlined, "10-15 min", "Time"),
+                  relatedItemsContainer("assets/images/potato.png"),
+                  relatedItemsContainer("assets/images/cabbage.png"),
+                  relatedItemsContainer("assets/images/cauliflower.png"),
+                  relatedItemsContainer("assets/images/potato.png"),
                 ],
               ),
-              const SizedBox(height: 15),
+            ),
+            const SizedBox(height: 15),
 
-              // Related Items Section
-              Text(
-                "Related Items",
-                style: AppWidget.headlineTextfieldStyle(),
-              ),
-              const SizedBox(height: 10),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
+            // Add to Cart Section
+            Row(
+              children: [
+                Column(
                   children: [
-                    relatedItemsContainer("assets/images/potato.png"),
-                    relatedItemsContainer("assets/images/cabbage.png"),
-                    relatedItemsContainer("assets/images/cauliflower.png"),
-                    relatedItemsContainer("assets/images/potato.png"),
+                    Text(
+                      "Total Price",
+                      style: AppWidget.normalTextfieldStyle(),
+                    ),
+                    Text(
+                      "\$40",
+                      style: AppWidget.headlineTextfieldStyle(),
+                    ),
                   ],
                 ),
-              ),
-              const SizedBox(height: 15),
-
-              // Add to Cart Section
-              Row(
-                children: [
-                  Column(
+                const Spacer(),
+                Container(
+                  height: 60,
+                  width: MediaQuery.of(context).size.width / 1.8,
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Row(
                     children: [
-                      Text(
-                        "Total Price",
-                        style: AppWidget.normalTextfieldStyle(),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(60),
+                          color: Colors.white,
+                        ),
+                        child: const Icon(
+                          Icons.shopping_cart_outlined,
+                          size: 30,
+                        ),
                       ),
+                      const SizedBox(width: 10),
                       Text(
-                        "\$40",
-                        style: AppWidget.headlineTextfieldStyle(),
+                        "Add to Cart",
+                        style: AppWidget.whiteTextfieldStyle(),
                       ),
                     ],
                   ),
-                  const Spacer(),
-                  Container(
-                    height: 60,
-                    width: MediaQuery.of(context).size.width / 1.8,
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(60),
-                            color: Colors.white,
-                          ),
-                          child: const Icon(
-                            Icons.shopping_cart_outlined,
-                            size: 30,
-                          ),
-                        ),
-                        const SizedBox(width: 10),
-                        Text(
-                          "Add to Cart",
-                          style: AppWidget.whiteTextfieldStyle(),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
