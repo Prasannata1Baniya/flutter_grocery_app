@@ -24,10 +24,10 @@ class _NavBarPageState extends State<NavBarPage> {
 
   @override
   void initState() {
-    searchItem = const SearchItemPage();
+    searchItem=SearchItemPage();
 
-    walletPage = const WalletPage();
-    orderPage = const OrderPage();
+    walletPage = WalletPage();
+    orderPage = OrderPage();
     profilePage = const ProfilePage();
 
     pages = [searchItem, walletPage, orderPage, profilePage];
@@ -48,12 +48,13 @@ class _NavBarPageState extends State<NavBarPage> {
               });
             },
             animationDuration: const Duration(milliseconds: 300),
-            items:const  [
-          Icon(Icons.home_outlined,color: Colors.white,),
-          Icon(Icons.wallet,color:Colors.white),
-          Icon(Icons.shopping_cart_outlined,color:Colors.white),
-          Icon(Icons.person,color:Colors.white),
-        ]),
+            items:[
+              Icon(Icons.home_outlined, color: currentTabIndex == 0 ? Colors.yellow : Colors.white),
+              Icon(Icons.wallet, color: currentTabIndex == 1 ? Colors.yellow : Colors.white),
+              Icon(Icons.shopping_cart_outlined, color: currentTabIndex == 2 ? Colors.yellow : Colors.white),
+              Icon(Icons.person, color: currentTabIndex == 3 ? Colors.yellow : Colors.white),
+        ]
+        ),
         body: pages[currentTabIndex],
         
         );

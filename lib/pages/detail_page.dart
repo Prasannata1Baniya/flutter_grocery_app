@@ -1,194 +1,222 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/service/service.dart';
+import '../service/service.dart';
 
-class DetailPage extends StatefulWidget {
-  const DetailPage({super.key});
+class DetailsPage extends StatelessWidget {
+  final String itemName;
+  final String imageUrl;
+  final String description;
+  final String price;
 
-  @override
-  State<DetailPage> createState() => _DetailPageState();
-}
+  const DetailsPage({
+    super.key,
+    required this.itemName,
+    required this.imageUrl,
+    required this.description,
+    required this.price,
+  });
 
-class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      children: [
-        Container(
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            color: Colors.grey.shade300,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Material(
-                elevation: 5.0,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
+      appBar: AppBar(
+        title: Text(itemName),
+        backgroundColor: Colors.green,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            // Image and Description Section
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.grey.shade300,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ClipRRect(
                     borderRadius: BorderRadius.circular(20),
+                    child: Image.asset(
+                      imageUrl,
+                      height: 250,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Text(description, style: AppWidget.normalTextfieldStyle()),
+                ],
+              ),
+            ),
+            const SizedBox(height: 30),
+
+            // Price and Quantity Section
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.grey.shade400,
                   ),
                   child: const Icon(
-                    Icons.arrow_back_ios_new_outlined,
-                    color: Colors.black,
+                    Icons.remove,
+                    color: Colors.grey,
+                    size: 40,
                   ),
                 ),
-              ),
-             Image.asset('assets/images/vegetables.jpg', height: 200),
-             const SizedBox(
-                height: 30,
-              ),
-            ],
-          ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.grey.shade400,
-              ),
-              child:const Icon(
-                Icons.add,
-                color: Colors.grey,
-              ),
-            ),
-            const SizedBox(width: 8),
-           const  Text("2kg "),
-            const SizedBox(width: 8),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.grey.shade400,
-              ),
-              child:const  Icon(
-                Icons.add,
-                color: Colors.green,size: 60,
-              ),
-            ),
-          ],
-        ),
-        Text(
-          "Vegetables ...",
-          style: AppWidget.headlineTextfieldStyle(),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Row(
-          children: [
-            Material(
-              borderRadius: BorderRadius.circular(12),
-              elevation: 3,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade400,
+                const SizedBox(width: 8),
+                Text(
+                  "\$$price", // Show price as currency
+                  style: AppWidget.headlineTextfieldStyle(),
                 ),
-                child: Row(
+                const SizedBox(width: 8),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.grey.shade400,
+                  ),
+                  child: const Icon(
+                    Icons.add,
+                    color: Colors.green,
+                    size: 40,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+
+            // Time & Rating Section
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _infoBox(Icons.rate_review, "4.5", "Rating"),
+                _infoBox(Icons.lock_clock_outlined, "10-15 min", "Time"),
+              ],
+            ),
+            const SizedBox(height: 15),
+
+            // Related Items Section
+            Text(
+              "Related Items",
+              style: AppWidget.headlineTextfieldStyle(),
+            ),
+            const SizedBox(height: 10),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  relatedItemsContainer("assets/images/potato.png"),
+                  relatedItemsContainer("assets/images/cabbage.png"),
+                  relatedItemsContainer("assets/images/cauliflower.png"),
+                  relatedItemsContainer("assets/images/potato.png"),
+                ],
+              ),
+            ),
+            const SizedBox(height: 15),
+
+            // Add to Cart Section
+            Row(
+              children: [
+                Column(
                   children: [
-                    const Icon(
-                      Icons.rate_review,
-                      color: Colors.black,
-                    ),
-                    const SizedBox(
-                      width: 5,
+                    Text(
+                      "Total Price",
+                      style: AppWidget.normalTextfieldStyle(),
                     ),
                     Text(
-                      "4.5",
-                      style: AppWidget.greyTextfieldStyle(),
+                      "\$40",
+                      style: AppWidget.headlineTextfieldStyle(),
                     ),
                   ],
                 ),
-              ),
-            ),
-            const SizedBox(
-              width: 5,
-            ),
-
-            //To show time
-            Material(
-              borderRadius: BorderRadius.circular(12),
-              elevation: 3,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade400,
+                const Spacer(),
+                Container(
+                  height: 60,
+                  width: MediaQuery.of(context).size.width / 1.8,
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(60),
+                          color: Colors.white,
+                        ),
+                        child: const Icon(
+                          Icons.shopping_cart_outlined,
+                          size: 30,
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        "Add to Cart",
+                        style: AppWidget.whiteTextfieldStyle(),
+                      ),
+                    ],
+                  ),
                 ),
-                child: Row(
-                  children: [
-                    const Icon(Icons.lock_clock_outlined, color: Colors.black),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Text(
-                      "10-15 min",
-                      style: AppWidget.greyTextfieldStyle(),
-                    ),
-                  ],
-                ),
-              ),
-            )
+              ],
+            ),
           ],
         ),
-        const SizedBox(height: 15,),
-        Text(
-          "Related Items",
-          style: AppWidget.headlineTextfieldStyle(),
-        ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              relatedItemsContainer("assets/images/potato.png"),
-               relatedItemsContainer("assets/images/cabbage.png"),
-                relatedItemsContainer("assets/images/cauliflower.png"),
-                relatedItemsContainer("assets/images/potato.png"),
-            ],
-          ),
-        ),
-        const Spacer(),
-        Row(children: [
-          Column(children: [
-            Text("Total Price",style:AppWidget.normalTextfieldStyle(),),
-            Text("40\$",style: AppWidget.normalTextfieldStyle(),),
-          ],),
-          Container(
-            padding:const EdgeInsets.only(left:10),
-            height:80,
-            width: MediaQuery.of(context).size.width/1.8,
-           decoration: BoxDecoration(
-            color:Colors.green,
-            borderRadius: BorderRadius.circular(20),
-           ),
-           child: Row(
-            children: [
-            Container(
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(60),color:Colors.white),
-              child: const Icon(Icons.shopping_cart_outlined,size: 50,
-              ),
-            ),
-            Text("Add to Cart",style: AppWidget.whiteTextfieldStyle(),)
-           ],), 
-          ),
-
-        ],
-        ),
-      ],
-    ));
+      ),
+    );
   }
 
-  Container relatedItemsContainer(String imageData) {
+  // Widget to display info with icon
+  Widget _infoBox(IconData icon, String text, String label) {
+    return Material(
+      borderRadius: BorderRadius.circular(12),
+      elevation: 3,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.grey.shade400,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Row(
+          children: [
+            Icon(icon, color: Colors.black),
+            const SizedBox(width: 5),
+            Text(
+              text,
+              style: AppWidget.greyTextfieldStyle(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // Widget for related item containers
+  Widget relatedItemsContainer(String imageData) {
     return Container(
-      decoration:const BoxDecoration(
+      margin: const EdgeInsets.only(right: 10),
+      decoration: BoxDecoration(
         color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade400,
+            blurRadius: 4,
+            spreadRadius: 1,
+          ),
+        ],
       ),
       child: Image.asset(
-       imageData,
-        height: 60,
-        width: 60,
+        imageData,
+        height: 80,
+        width: 80,
+        fit: BoxFit.cover,
       ),
     );
   }
 }
+
