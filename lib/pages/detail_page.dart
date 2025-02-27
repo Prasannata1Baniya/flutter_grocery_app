@@ -44,7 +44,7 @@ class DetailsPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     child: Image.asset(
                       imageUrl,
-                      height: 250,
+                      height: 225,
                       fit: BoxFit.cover,
                     ),
                   ),
