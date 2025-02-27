@@ -15,6 +15,8 @@ class SearchItemPage extends StatelessWidget {
     Item(name: "Cabbage", imageUrl: "assets/images/cabbage.png", description: "Fresh and organic cabbages", price: "\$3.99"),
     Item(name: "Cauliflower", imageUrl: "assets/images/cauliflower.png", description: "Fresh and organic cauliflower", price: "\$2.49"),
     Item(name: "Potato", imageUrl: "assets/images/potato.png", description: "Fresh and organic potatoes", price: "\$1.99"),
+    Item(name: "Brinjal", imageUrl: "assets/images/brinjal.png", description: "Fresh and organic brinjal", price: "\$3.99"),
+    Item(name: "Red Pepper", imageUrl: "assets/images/red_pepper.png", description: "Fresh and organic red pepper", price: "\$2.49"),
     Item(name: "Potato", imageUrl: "assets/images/potato.png", description: "Fresh and organic ,Healthy potatoes", price: "\$1.99"),
   ];
 

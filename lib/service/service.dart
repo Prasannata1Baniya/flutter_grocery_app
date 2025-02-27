@@ -27,8 +27,8 @@ class AppWidget {
 
    static TextStyle normalTextfieldStyle() {
     return const TextStyle(
-      color: Colors.black45,
-      fontSize: 30,
+      color: Colors.black26,
+      fontSize: 23,
       fontWeight: FontWeight.w600,
     );
   }
@@ -39,4 +39,13 @@ class AppWidget {
       fontWeight: FontWeight.w600,
     );
   }
+  static TextStyle whiteSmallTextfieldStyle() {
+    return const TextStyle(
+      color: Colors.white,
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
+    );
+  }
 }
+
+

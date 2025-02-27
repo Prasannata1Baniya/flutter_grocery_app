@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../service/service.dart';
+
 class Transaction {
   final String title;
   final String amount;
@@ -23,7 +25,10 @@ class WalletPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Wallet")),
+      appBar: AppBar(
+        title:Text("Wallet",style: AppWidget.whiteTextfieldStyle(),),
+        backgroundColor: Colors.black,
+      ),
       body: Column(
         children: [
           // Wallet Balance
@@ -36,7 +41,7 @@ class WalletPage extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const Text("Wallet Balance", style: TextStyle(color: Colors.white, fontSize: 18)),
+                Text("Wallet Balance", style: AppWidget.whiteSmallTextfieldStyle()),
                 const SizedBox(height: 5),
                 Text(walletBalance, style: const TextStyle(color: Colors.green, fontSize: 24, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 10),

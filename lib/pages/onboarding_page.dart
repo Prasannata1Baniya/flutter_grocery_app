@@ -28,7 +28,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 'assets/images/vegetables.png',
                 height: screenHeight / 2.2,
                 width: screenWidth,
-                fit: BoxFit.contain,
+                fit: BoxFit.fill,
               ),
             ),
           ),
