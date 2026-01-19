@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../service/service.dart';
+import 'package:grocery_app/utils/text_styles.dart';
 
 class DetailsPage extends StatelessWidget {
   final String itemName;
@@ -49,7 +49,7 @@ class DetailsPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  Text(description, style: AppWidget.normalTextfieldStyle()),
+                  Text(description, style: TextStyles.subTitle),
                 ],
               ),
             ),
@@ -73,7 +73,7 @@ class DetailsPage extends StatelessWidget {
                 const SizedBox(width: 8),
                 Text(
                   "\$$price", // Show price as currency
-                  style: AppWidget.headlineTextfieldStyle(),
+                  style:  TextStyles.bodyText,
                 ),
                 const SizedBox(width: 8),
                 Container(
@@ -102,9 +102,9 @@ class DetailsPage extends StatelessWidget {
             const SizedBox(height: 15),
 
             // Related Items Section
-            Text(
+           const Text(
               "Related Items",
-              style: AppWidget.headlineTextfieldStyle(),
+              style:  TextStyles.subTitle,
             ),
             const SizedBox(height: 10),
             SingleChildScrollView(
@@ -123,15 +123,15 @@ class DetailsPage extends StatelessWidget {
             // Add to Cart Section
             Row(
               children: [
-                Column(
+                const Column(
                   children: [
                     Text(
                       "Total Price",
-                      style: AppWidget.normalTextfieldStyle(),
+                      style: TextStyles.subTitle,
                     ),
                     Text(
                       "\$40",
-                      style: AppWidget.headlineTextfieldStyle(),
+                      style: TextStyles.subTitle,
                     ),
                   ],
                 ),
@@ -158,7 +158,7 @@ class DetailsPage extends StatelessWidget {
                       const SizedBox(width: 10),
                       Text(
                         "Add to Cart",
-                        style: AppWidget.whiteTextfieldStyle(),
+                        style:TextStyles.whiteTextfieldStyle(),
                       ),
                     ],
                   ),
@@ -187,7 +187,7 @@ class DetailsPage extends StatelessWidget {
             const SizedBox(width: 5),
             Text(
               text,
-              style: AppWidget.greyTextfieldStyle(),
+              style: TextStyles.greyTextfieldStyle(),
             ),
           ],
         ),

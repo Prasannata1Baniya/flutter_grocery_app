@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/service/service.dart';
+import 'package:grocery_app/utils/text_styles.dart';
 
 class Order {
   final String name;
@@ -57,7 +57,7 @@ class OrderPage extends StatelessWidget {
         backgroundColor: Colors.black,
         title: Text(
           "My Orders",
-          style: AppWidget.whiteTextfieldStyle(),
+          style: TextStyles.whiteTextfieldStyle(),
         ),
         leading: IconButton(
             onPressed: () {

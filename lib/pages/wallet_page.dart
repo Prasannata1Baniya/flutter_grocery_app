@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../service/service.dart';
+import '../utils/text_styles.dart';
 
 class Transaction {
   final String title;
@@ -26,7 +25,7 @@ class WalletPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:Text("Wallet",style: AppWidget.whiteTextfieldStyle(),),
+        title:Text("Wallet",style:  TextStyles.whiteTextfieldStyle(),),
         backgroundColor: Colors.black,
         leading: IconButton(onPressed: (){
           Navigator.of(context).pop();
@@ -45,7 +44,7 @@ class WalletPage extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Text("Wallet Balance", style: AppWidget.whiteSmallTextfieldStyle()),
+                Text("Wallet Balance", style: TextStyles.whiteTextfieldStyle()),
                 const SizedBox(height: 5),
                 Text(walletBalance, style: const TextStyle(color: Colors.green, fontSize: 24, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 10),
