@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/pages/nav-bar/nav_bar.dart';
-import 'package:grocery_app/pages/onboarding_page.dart';
-import 'package:grocery_app/pages/search_item.dart';
+//import 'package:grocery_app/pages/onboarding_page.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
