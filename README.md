@@ -1,16 +1,11 @@
-# grocery_app
+# Grocery App
+A modern, intuitive grocery shopping application built with Flutter.
 
-A new Flutter project.
+## Preview
+| Home Screen | Wallet | Orders |
+![Home](assets/g1.png) | ![Wallet](assets/g2.png) | ![Orders](assets/g3.png) |
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Features
+* **Search & Filter:** Easily find your favorite groceries.
+* **Wallet Integration:** Manage your balance and view transaction history.
+* **Order Tracking:** Track the status of your deliveries in real-time.

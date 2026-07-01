@@ -47,6 +47,7 @@ class _SearchItemPageState extends State<SearchItemPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade100,
       appBar: AppBar(title: const Text("Search Items",),
       backgroundColor: Colors.green,
         foregroundColor: Colors.white,
@@ -71,7 +72,7 @@ class _SearchItemPageState extends State<SearchItemPage> {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                crossAxisSpacing: 16, // Increased spacing
+                crossAxisSpacing: 16,
                 mainAxisSpacing: 16,
                 childAspectRatio: 2, // Vertical card feel
               ),
@@ -89,6 +90,7 @@ class _SearchItemPageState extends State<SearchItemPage> {
                           imageUrl: item.imageUrl,
                           description: item.description,
                           price: item.price,
+                          uniqueId: index,
                         ),
                       ),
                     );
@@ -105,7 +107,7 @@ class _SearchItemPageState extends State<SearchItemPage> {
                           child: Padding(
                             padding: const EdgeInsets.all(12.0),
                             child: Hero(
-                              tag: item.imageUrl, // Enables premium transition
+                                tag: "${item.name}_${item.imageUrl}_$index",
                               child: Image.asset(item.imageUrl, fit: BoxFit.contain),
                             ),
                           ),

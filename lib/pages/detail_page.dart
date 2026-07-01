@@ -5,6 +5,7 @@ class DetailsPage extends StatefulWidget {
   final String imageUrl;
   final String description;
   final String price;
+  final int uniqueId;
 
   const DetailsPage({
     super.key,
@@ -12,6 +13,7 @@ class DetailsPage extends StatefulWidget {
     required this.imageUrl,
     required this.description,
     required this.price,
+    required this.uniqueId,
   });
 
   @override
@@ -34,7 +36,7 @@ class _DetailsPageState extends State<DetailsPage> {
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
               background: Hero(
-                tag: widget.imageUrl,
+                tag: "${widget.itemName}_${widget.imageUrl}_${widget.uniqueId}",
                 child: Image.asset(widget.imageUrl, fit: BoxFit.cover),
               ),
             ),
@@ -99,8 +101,8 @@ class _DetailsPageState extends State<DetailsPage> {
 
         ],
       ),
-      // 4. Sticky Footer
-      bottomNavigationBar: _buildBottomBar(total),
+      //Sticky Footer
+      bottomNavigationBar: SafeArea(child: _buildBottomBar(total)),
     );
   }
 
