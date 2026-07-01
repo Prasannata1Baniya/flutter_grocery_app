@@ -23,7 +23,7 @@ class TextStyles{
 
 
 
-  static TextStyle whiteTextfieldStyle() {
+  static TextStyle whiteTextFieldStyle() {
     return const TextStyle(
       color: Colors.white,
       fontSize: 22,
@@ -32,7 +32,7 @@ class TextStyles{
   }
 
 
-  static TextStyle greyTextfieldStyle() {
+  static TextStyle greyTextFieldStyle() {
     return const TextStyle(
       color: Colors.white,
       fontSize: 22,

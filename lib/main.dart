@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/pages/nav-bar/nav_bar.dart';
 import 'package:grocery_app/pages/onboarding_page.dart';
+import 'package:grocery_app/pages/search_item.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:const OnboardingPage(),
+      home: const NavBarPage(),
     );
   }
 }

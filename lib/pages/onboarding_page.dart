@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/pages/nav-bar/nav_bar.dart';
 
-// Main Onboarding Page Widget - Now much cleaner!
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Use LayoutBuilder for more reliable adaptive layouts.
     return Scaffold(
-      backgroundColor: Colors.white, // Set a default background
+      backgroundColor: Colors.white,
       body: LayoutBuilder(
         builder: (context, constraints) {
-          // Check if the width is greater than a typical tablet breakpoint.
           if (constraints.maxWidth > 720) {
-            // --- WIDE SCREEN LAYOUT (WEB/TABLET) ---
             return const WideOnboardingLayout();
           } else {
-            // --- NARROW SCREEN LAYOUT (MOBILE) ---
             return const NarrowOnboardingLayout();
           }
         },
@@ -26,7 +21,6 @@ class OnboardingPage extends StatelessWidget {
   }
 }
 
-// Widget for the Wide (Row) Layout
 class WideOnboardingLayout extends StatelessWidget {
   const WideOnboardingLayout({super.key});
 
@@ -34,12 +28,10 @@ class WideOnboardingLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Row(
       children: [
-        // The image takes up half of the screen.
         Expanded(
           flex: 1,
           child: OnboardingImage(),
         ),
-        // The onboarding content takes up the other half.
         Expanded(
           flex: 1,
           child: OnboardingContent(),
@@ -49,7 +41,6 @@ class WideOnboardingLayout extends StatelessWidget {
   }
 }
 
-// Widget for the Narrow (Column) Layout
 class NarrowOnboardingLayout extends StatelessWidget {
   const NarrowOnboardingLayout({super.key});
 
@@ -57,12 +48,10 @@ class NarrowOnboardingLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-        // The image takes up the top half.
         Expanded(
           flex: 1,
           child: OnboardingImage(),
         ),
-        // The content takes up the bottom half.
         Expanded(
           flex: 1,
           child: OnboardingContent(),
@@ -79,7 +68,7 @@ class OnboardingImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: double.infinity, // Ensures it fills the Expanded widget
+      height: double.infinity,
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage("assets/images/vegetables.png"),
@@ -96,7 +85,6 @@ class OnboardingContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -105,93 +93,67 @@ class OnboardingContent extends StatelessWidget {
           topRight: Radius.circular(40),
         ),
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 30),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+      child: const Column(
         children: [
-
-          //For navbar
-          Container(
-            height: 50,
-            width: double.infinity,
-            child:Column(
-              children: [
-                Row(
-                  children: [
-                    Icon(Icons.shopping_cart,color: Colors.green,),
-                    Text("FreshCart"),
-                    Spacer(),
-                   Text("Home"),
-                    Text("Shop"),
-                    Text("Details"),
-                    Text("Profile"),
-
-                    Spacer(),
-                    Icon(Icons.search),
-                    Icon(Icons.person),
-                    Icon(Icons.shopping_cart),
-                  ],
-                )
-              ],
-            ) ,
-          ),
-
-          //Cards in body
-          Row(
+           Row(
             children: [
-              Cards(title: "Welcome to FreshCart!",
-                  subTitle:  "Your one-stop shop for fresh groceries",
-              image: "",),
-              Cards(title: '',subTitle: "", image:''),
+              Icon(Icons.shopping_cart, color: Colors.green),
+              Text("FreshCart", style: TextStyle(fontWeight: FontWeight.bold)),
+              Spacer(),
+              Text("Home"), SizedBox(width: 10), Text("Shop"),
+              Spacer(),
+              Icon(Icons.search), SizedBox(width: 10), Icon(Icons.person),
             ],
           ),
+          SizedBox(height: 40),
 
+           Expanded(
+            child: Row(
+              children: [
+                Expanded(child: Cards(title: "Welcome!", subTitle: "Fresh Groceries", image: 'assets/images/potato.png')),
+                SizedBox(width: 10),
+                Expanded(child: Cards(title: "Fast Delivery", subTitle: "To your door", image: 'assets/images/cabbage.png')),
+              ],
+            ),
+          ),
         ],
       ),
     );
   }
 }
 
-
 class Cards extends StatelessWidget {
   final String title;
   final String subTitle;
   final String image;
-  const Cards({super.key, required this.title, required this.subTitle,
-    required this.image});
+
+  const Cards({super.key, required this.title, required this.subTitle, required this.image});
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      child:Padding(
-        padding: const EdgeInsets.all(8.0),
+      elevation: 4,
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(title),
-            const SizedBox(height: 10,),
-            Text(subTitle),
-            const SizedBox(height: 10,),
-             CircleAvatar(
-              radius: 50,
-              child: Image(
-                  image: AssetImage(image),
-              ),
+            Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 10),
+            Text(subTitle, textAlign: TextAlign.center),
+            const SizedBox(height: 10),
+            Image.asset(
+              image,
+              height: 80,
+              errorBuilder: (c, o, s) => const Icon(Icons.broken_image, size: 50),
             ),
-            const SizedBox(height: 10,),
+            const SizedBox(height: 15),
             ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  )
-                ),
-                onPressed: (){
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_)=>const NavBarPage()));
-                },
-                child:const Text("Next",
-                  style: TextStyle(color: Colors.white),)),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const NavBarPage())),
+              child: const Text("Next", style: TextStyle(color: Colors.white)),
+            ),
           ],
         ),
       ),
@@ -200,18 +162,16 @@ class Cards extends StatelessWidget {
 }
 
 
-
-
 /*
 Text(
             "Shop Grocery Items Here!",
-            style: AppWidget.headlineTextfieldStyle(),
+            style: AppWidget.headlineTextFieldStyle(),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 5),
-          Text("Everything!", style: AppWidget.greenTextfieldStyle()),
+          Text("Everything!", style: AppWidget.greenTextFieldStyle()),
           const SizedBox(height: 10),
-          Text("Easy to buy", style: AppWidget.greyTextfieldStyle()),
+          Text("Easy to buy", style: AppWidget.greyTextFieldStyle()),
           const SizedBox(height: 40),
           // Circular Button
           SizedBox(

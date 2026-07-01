@@ -68,10 +68,10 @@ class _RegisterPageState extends State<RegisterPage> {
             height: MediaQuery.of(context).size.height * 0.6,
             width: MediaQuery.of(context).size.width*0.7,
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.1),
+              color: Colors.white.withValues(alpha: 0.1),
               border: Border.all(
                 width: 1.5,
-                color: Colors.white.withOpacity(0.2),
+                color: Colors.white.withValues(alpha: 0.2),
               ),
             ),
             child: SingleChildScrollView(
@@ -101,7 +101,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                       },
                       child: Text("Register",
-                        style: TextStyles.whiteTextfieldStyle(),)
+                        style: TextStyles.whiteTextFieldStyle(),)
                   ),
 
                 ],

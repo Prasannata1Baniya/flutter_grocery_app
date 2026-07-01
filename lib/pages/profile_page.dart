@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/utils/text_styles.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const  Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
+      appBar: AppBar(
+        title: Text('My Profile',style: TextStyles.whiteTextFieldStyle(),),
+        backgroundColor: Colors.green,
+        foregroundColor: Colors.white,
+      ),
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

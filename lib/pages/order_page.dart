@@ -53,11 +53,91 @@ class OrderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade50,
+      // Light background for better contrast
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.green,
+        title: Text("My Orders", style: TextStyles.whiteTextFieldStyle()),
+        elevation: 0,
+        leading: IconButton(
+            onPressed: () => Navigator.of(context).pop(),
+            icon: const Icon(Icons.arrow_back, color: Colors.white)),
+      ),
+      body: ListView.separated(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+        itemCount: orders.length,
+        separatorBuilder: (context, index) => const SizedBox(height: 12),
+        itemBuilder: (context, index) {
+          final order = orders[index];
+          return Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(color: Colors.grey.shade200,
+                    blurRadius: 10,
+                    offset: const Offset(0, 5)),
+              ],
+            ),
+            child: Row(
+              children: [
+                // Product Image
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: Image.asset(
+                      order.imageUrl, width: 70, height: 70, fit: BoxFit.cover),
+                ),
+                const SizedBox(width: 16),
+                // Order Details
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(order.name, style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 16)),
+                      const SizedBox(height: 4),
+                      Text(order.status, style: TextStyle(
+                          color: _getStatusColor(order.status),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 13
+                      )),
+                    ],
+                  ),
+                ),
+                // Price
+                Text(order.price, style: const TextStyle(
+                    fontWeight: FontWeight.bold, fontSize: 16)),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  Color _getStatusColor(String status) {
+    switch (status) {
+      case "Delivered":
+        return Colors.green;
+      case "Shipped":
+        return Colors.blue;
+      case "Pending":
+        return Colors.orange;
+      default:
+        return Colors.grey;
+    }
+  }
+}
+
+  /*@override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.green,
         title: Text(
           "My Orders",
-          style: TextStyles.whiteTextfieldStyle(),
+          style: TextStyles.whiteTextFieldStyle(),
         ),
         leading: IconButton(
             onPressed: () {
@@ -95,5 +175,5 @@ class OrderPage extends StatelessWidget {
         },
       ),
     );
-  }
-}
+  }*/
+
