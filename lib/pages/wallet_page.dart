@@ -44,7 +44,6 @@ class WalletPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          // 1. Premium Gradient Wallet Card
           Container(
             margin: const EdgeInsets.all(20),
             padding: const EdgeInsets.all(25),
@@ -81,7 +80,6 @@ class WalletPage extends StatelessWidget {
             ),
           ),
 
-          // 2. Styled Transaction List
           Expanded(
             child: ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -125,62 +123,3 @@ class WalletPage extends StatelessWidget {
     );
   }
 }
-
-  /*@override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title:Text("Wallet",style:  TextStyles.whiteTextFieldStyle(),),
-        backgroundColor: Colors.green,
-        leading: IconButton(onPressed: (){
-          Navigator.of(context).pop();
-        }, icon: const Icon(Icons.arrow_back,color: Colors.white,)
-        ),
-      ),
-      body: Column(
-        children: [
-          // Wallet Balance
-          Container(
-            margin: const EdgeInsets.all(16),
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Column(
-              children: [
-                Text("Wallet Balance", style: TextStyles.whiteTextFieldStyle()),
-                const SizedBox(height: 5),
-                Text(walletBalance, style: const TextStyle(color: Colors.green, fontSize: 24, fontWeight: FontWeight.bold)),
-                const SizedBox(height: 10),
-                ElevatedButton.icon(
-                  icon: const Icon(Icons.add),
-                  label: const Text("Add Funds"),
-                  onPressed: () {
-                    // Add funds logic here
-                  },
-                ),
-              ],
-            ),
-          ),
-
-          // Transactions List
-          Expanded(
-            child: ListView.builder(
-              itemCount: transactions.length,
-              itemBuilder: (context, index) {
-                final transaction = transactions[index];
-                return ListTile(
-                  leading: Icon(transaction.isCredit ? Icons.arrow_downward : Icons.arrow_upward,
-                      color: transaction.isCredit ? Colors.green : Colors.red),
-                  title: Text(transaction.title),
-                  subtitle: Text(transaction.date),
-                  trailing: Text(transaction.amount, style: TextStyle(color: transaction.isCredit ? Colors.green : Colors.red)),
-                );
-              },
-            ),
-          ),
-        ],
-      ),
-    );
-  }*/
