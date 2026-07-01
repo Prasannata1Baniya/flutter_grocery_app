@@ -2,8 +2,15 @@
 A modern, intuitive grocery shopping application built with Flutter.
 
 ## Preview
-| Home Screen | Wallet | Orders |
-![Home](assets/g1.png) | ![Wallet](assets/g2.png) | ![Orders](assets/g3.png) |
+
+**Home Screen**
+![Home](assets/g1.png)
+
+**Wallet**
+![Wallet](assets/g2.png)
+
+**Orders**
+![Orders](assets/g3.png)
 
 ## Features
 * **Search & Filter:** Easily find your favorite groceries.
